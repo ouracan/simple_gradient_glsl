@@ -1,0 +1,19 @@
+CFILES = shader.cpp main.cpp
+CFLAGS = -O3 -c -Wall
+
+INCLUDES = -I/usr/include -I/usr/include/SOIL -I/usr/local/include/ -I../common  `pkg-config --cflags glfw3` `pkg-config --cflags opencv`
+ 
+LIBS = -lm -L/usr/local/lib -lGLEW -lSOIL `pkg-config --static --libs glfw3` `pkg-config --libs opencv` -Wno-write-strings -framework OpenGL -framework GLUT -framework Cocoa -framework IOKit -framework CoreVideo
+CC = g++
+OBJECTS=$(CFILES:.cpp=.o)
+EXECUTABLE=main
+
+all: $(CFILES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(INCLUDES) $(OBJECTS) -o $@ $(LIBS)
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
+	
+clean:
+	rm -v -f *~ ../common/*.o *.o *.obj $(EXECUTABLE)

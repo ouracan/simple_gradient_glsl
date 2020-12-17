@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-    window = glfwCreateWindow(640, 480, "Chapter 4 - GLSL", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Simple Gradient - GLSL", nullptr, nullptr);
     if(!window){
       fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
       glfwTerminate();
